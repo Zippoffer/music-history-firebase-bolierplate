@@ -78,7 +78,9 @@ let $ = require('jquery'),
 // ****************************************
 // DB interaction using Firebase SDK
 // ****************************************
+
 ///***remove***once***update***\\\
+
 function getSongs(callback) {
     firebase.database().ref('songs').on('value', function(songData) {
         console.log("something goes on");

@@ -67,7 +67,7 @@ let $ = require('jquery'),
 // function when anything changes in our data
 
 // Use before adding Oauth, then move to Oauth callback
-db.getSongs(templates.makeSongList);
+// db.getSongs(templates.makeSongList);
 
 // No need to reload the DOM in the ".then"
 $(document).on("click", ".save_new_btn", function() {
@@ -109,7 +109,21 @@ $(document).on("click", ".delete-btn", function() {
 // User login section. Should ideally be in its own module
 $("#auth-btn").click(function() {
     console.log("clicked auth");
-
+    login()
+        .then(function(result) {
+            var user = result.user;
+            console.log("logged in user", user.uid);
+            db.getSongs(templates.makeSongList);
+        }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+        });
 });
 
 // Helper functions for forms stuff. Nothing related to Firebase
