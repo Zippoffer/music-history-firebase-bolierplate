@@ -8,12 +8,12 @@ require("firebase/auth");
 require("firebase/database");
 
 var config = {
-  apiKey: fbData.key,
-  databaseURL: fbData.url,
-  authDomain: fbData.url,
-  storageBucket: fbData.bucketUrl
+    apiKey: fbData.key,
+    databaseURL: fbData.url,
+    authDomain: fbData.authUrl,
+    storageBucket: fbData.bucketUrl
 };
 
-// firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 module.exports = firebase;
